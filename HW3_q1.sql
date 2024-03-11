@@ -12,10 +12,11 @@ BEGIN
         RETURN 'lazy';
     ELSIF (counts < 7) THEN 
         RETURN 'average';
-    ELSE RETURN 'prolific';
+    ELsIF (counts >=7) THEN 
+        RETURN 'prolific';
     END IF; 
 END;
 /
     
-    SELECT ArtistWorkEthic(1) 
+    SELECT ArtistWorkEthic(8) 
     FROM ARTIST; 
