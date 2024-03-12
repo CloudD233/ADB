@@ -12,17 +12,17 @@ AS
     readDD NUMBER; 
     readTitle char(35); 
     readMedium char(35); 
-    readdescription VARCHAR2; 
+    readdescription VARCHAR2(1000); 
     
     CURSOR artistcursor IS 
         SELECT ArtistID, FirstName, LastName, Nationality, DateofBirth, DateOfBirth, DateDeceased
         FROM ARTIST 
         WHERE LastName = varLastName AND FirstName = varFirstName;
         
-    CURSOR workcursor IS 
+    CURSOR workcursor(p_ArtistID NUMBER) IS 
         SELECT Title, Medium, description
         FROM WORK 
-        WHERE artist.ArtistID = work.ArtistID; 
+        WHERE ArtistID = p_ArtistID; 
         
     
 BEGIN 
@@ -35,9 +35,14 @@ BEGIN
         readDOB := artist.DateOfBirth; 
         readDD := artist.DateDeceased; 
         readArtistID := artist.ArtistID; 
-        readTitle := workcursor.Title; 
-        readMedium := workcursor.Medium;
-        readdescription := workcursor.description; 
+         
+        
+            FOR work IN workcursorj(readArtistID) 
+            LOOP 
+                readTitle := workcursor.Title; 
+                readMedium := workcursor.Medium;
+                readdescription := workcursor.description; 
+            END LOOP; 
         END LOOP; 
         
 END; 
