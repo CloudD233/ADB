@@ -42,13 +42,3 @@ BEGIN
         
 END; 
 /
-
-
-LINE/COL  ERROR
---------- -------------------------------------------------------------
-15/21     PLS-00215: String length constraints must be in range (1 .. 32767)
-23/9      PL/SQL: SQL Statement ignored
-25/15     PL/SQL: ORA-00904: "ARTIST"."ARTISTID": invalid identifier
-30/5      PL/SQL: Statement ignored
-30/5      PLS-00402: alias required in SELECT list of cursor to avoid duplicate column names
-Errors: check compiler log
