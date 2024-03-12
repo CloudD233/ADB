@@ -1,0 +1,29 @@
+--SQL-PSM Worksheet 3
+
+--QUESTION 4
+CREATE OR REPLACE TRIGGER DisallowWorkID 
+BEFORE UPDATE OF WORKID ON WORK
+    
+BEGIN 
+    raise_application_error(-20000, 'Warning: NO CANT DO');
+END;
+/
+
+--QUESTION 5 
+update WORK set WORKID = 1;
+
+--QUESTION 6
+--make table and insert
+CREATE TABLE ALLOWED_NATIONALITY (Nation Char(30) PRIMARY KEY);
+
+INSERT INTO ALLOWED_NATIONALITY (Nation)
+VALUES('United States');
+
+
+--Trigger
+CREATE OR REPLACE TRIGGER checkIfThere
+BEFORE UPDATE OF Nation ON ALLOWED_NATIONALITY
+
+BEGIN 
+
+IF 
