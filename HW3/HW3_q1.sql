@@ -26,4 +26,4 @@ SELECT
     ArtistWorkEthic(A.ArtistID),
     A.LastName
 FROM
-    ARTIST A;
+    ARTIST A; 
