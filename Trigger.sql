@@ -22,19 +22,20 @@ INSERT INTO
 VALUES
 ('United States');
 
-ALTER TABLE
-    artist DROP CONSTRAINT nationalityvalues;
+ALTER TABLE artist DROP CONSTRAINT nationalityvalues;
 
---Trigger
-CREATE
-OR REPLACE TRIGGER preventUpdate BEFORE
-UPDATE
-    OF Nation ON ALLOWED_NATIONALITY BEGIN IF NEW.Nation IS NOT DISTINCT
-FROM
-    OLD.Nation THEN raise_application_error(-20000, 'Warning: NO CANT DO');
-
-END IF;
-
-END;
-
-/
+CREATE OR REPLACE TRIGGER validNationality
+BEFORE INSERT OR UPDATE ON ARTIST
+FOR EACH ROW
+DECLARE
+    varRows INT; 
+BEGIN 
+    SELECT COUNT(*) INTO varRows
+    FROM ALLOWED_NATIONALITY A
+    WHERE A.Nation = :new.Nationality;
+    
+    IF varRows < 1 THEN 
+        raise_application_error(-20001, 'Warning: NO CANT DO');
+    END IF; 
+    END; 
+    /
