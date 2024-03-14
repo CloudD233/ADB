@@ -18,12 +18,15 @@ CREATE TABLE ALLOWED_NATIONALITY (Nation Char(30) PRIMARY KEY);
 
 INSERT INTO ALLOWED_NATIONALITY (Nation)
 VALUES('United States');
-
+ALTER TABLE artist DROP CONSTRAINT nationalityvalues;
 
 --Trigger
-CREATE OR REPLACE TRIGGER checkIfThere
-BEFORE UPDATE OF Nation ON ALLOWED_NATIONALITY
-
-BEGIN 
-
-IF 
+    CREATE OR REPLACE TRIGGER preventUpdate
+    BEFORE UPDATE OF Nation ON ALLOWED_NATIONALITY
+    
+    BEGIN 
+        IF NEW.Nation IS NOT DISTINCT FROM OLD.Nation THEN
+        raise_application_error(-20000, 'Warning: NO CANT DO');
+        END IF; 
+        END;
+        /
