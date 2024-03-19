@@ -5,19 +5,12 @@ OR REPLACE PROCEDURE displayArtist (
 ) AS readArtistID NUMBER;
 
 readFirstName char(25);
-
 readLastName char(25);
-
 readnationality char(30);
-
 readDOB NUMBER;
-
 readDD NUMBER;
-
 readTitle char(35);
-
 readMedium char(35);
-
 readdescription VARCHAR2(1000);
 
 CURSOR artistcursor IS
@@ -32,10 +25,9 @@ SELECT
 FROM
     ARTIST
 WHERE
-    LastName = varLastName
-    AND FirstName = varFirstName;
+    TRIM(LastName) = TRIM(varLastName) AND TRIM(FirstName) = TRIM(varFirstName);
 
-CURSOR workcursor(p_ArtistID NUMBER) IS
+CURSOR workCursor(p_ArtistID NUMBER) IS
 SELECT
     Title,
     Medium,
@@ -45,24 +37,28 @@ FROM
 WHERE
     ArtistID = p_ArtistID;
 
-BEGIN FOR artist IN artistcursor LOOP readLastName := artist.LastName;
-
+BEGIN FOR artist IN artistcursor LOOP 
+readLastName := artist.LastName;
 readFirstName := artist.FirstName;
-
 readNationality := artist.Nationality;
-
 readDOB := artist.DateOfBirth;
-
 readDD := artist.DateDeceased;
-
 readArtistID := artist.ArtistID;
+DBMS_OUTPUT.PUT_LINE('Artist ID: ' || readArtistID);
+        DBMS_OUTPUT.PUT_LINE('Name: ' || TRIM(readFirstName) || ' ' || TRIM(readLastName));
+        DBMS_OUTPUT.PUT_LINE('Nationality: ' || TRIM(readNationality));
+        DBMS_OUTPUT.PUT_LINE('DOB: ' || readDOB);
+        DBMS_OUTPUT.PUT_LINE('DOD: ' || readDOD);
 
-FOR work IN workcursorj(readArtistID) LOOP readTitle := workcursor.Title;
-
+FOR work IN workcursorj(readArtistID) 
+LOOP readTitle := workcursor.Title;
 readMedium := workcursor.Medium;
-
 readdescription := workcursor.description;
 
+DBMS_OUTPUT.PUT_LINE('Title: ' || TRIM(readTitle));
+            DBMS_OUTPUT.PUT_LINE('Medium: ' || TRIM(readMedium));
+            DBMS_OUTPUT.PUT_LINE('Description: ' || TRIM(readDescription));
+DBMS_OUTPUT.PUT_LINE('----------------------');
 END LOOP;
 
 END LOOP;
@@ -70,3 +66,8 @@ END LOOP;
 END;
 
 /
+
+
+SET SERVEROUTPUT ON;
+EXEC displayArtist('FirstName', 'LastName');
+
