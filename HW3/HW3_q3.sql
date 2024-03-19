@@ -47,15 +47,18 @@ readDOB := artist.DateOfBirth;
 readDD := artist.DateDeceased;
 readArtistID := artist.ArtistID;
 DBMS_OUTPUT.PUT_LINE('Artist ID: ' || readArtistID);
+DBMS_OUTPUT.PUT_LINE('FirstName: ' || readFirstName);
 
 FOR work IN workCursor(readArtistID) 
 LOOP readTitle := work.Title;
 readMedium := work.Medium;
 readdescription := work.description;
-
+DBMS_OUTPUT.PUT_LINE('----------------------------------');
 DBMS_OUTPUT.PUT_LINE('Title: ' || TRIM(readTitle));
-
+DBMS_OUTPUT.PUT_LINE('Medium: ' || TRIM(readmedium));
+DBMS_OUTPUT.PUT_LINE('description: ' || TRIM(readdescription));
 END LOOP;
+DBMS_OUTPUT.PUT_LINE('----------------------------------');
 
 END LOOP;
 
