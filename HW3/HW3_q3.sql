@@ -67,19 +67,9 @@ END;
 
 /
 
-    
-Error starting at line : 72 in command -
-BEGIN displayArtist('FirstName', 'LastName'); END;
-Error report -
-ORA-06550: line 1, column 7:
-PLS-00905: object Z07DENG.DISPLAYARTIST is invalid
-ORA-06550: line 1, column 7:
-PL/SQL: Statement ignored
-06550. 00000 -  "line %s, column %s:\n%s"
-*Cause:    Usually a PL/SQL compilation error.
-*Action:
 
+
+SELECT * FROM ARTIST;
 
 SET SERVEROUTPUT ON;
-EXEC displayArtist('FirstName', 'LastName');
-
+EXEC displayArtist('Joan', 'Miro');
