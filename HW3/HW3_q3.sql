@@ -73,3 +73,12 @@ SELECT * FROM ARTIST;
 
 SET SERVEROUTPUT ON;
 EXEC displayArtist('Joan', 'Miro');
+
+
+Procedure DISPLAYARTIST compiled
+
+LINE/COL  ERROR
+--------- -------------------------------------------------------------
+39/7      PL/SQL: Statement ignored
+39/7      PLS-00402: alias required in SELECT list of cursor to avoid duplicate column names
+Errors: check compiler log
