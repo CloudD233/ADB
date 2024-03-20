@@ -52,7 +52,7 @@ DBMS_OUTPUT.PUT_LINE('LastName: ' || readLastName);
 DBMS_OUTPUT.PUT_LINE('Nationality: ' || readnationality );
 DBMS_OUTPUT.PUT_LINE('DOB: ' || readDOB );
 DBMS_OUTPUT.PUT_LINE('DD: ' || readDD );
-DBMS_OUTPUT.PUT_LINE('Title: ' || readTitle  );
+
 FOR work IN workCursor(readArtistID) 
 LOOP readTitle := work.Title;
 readMedium := work.Medium;
@@ -65,9 +65,7 @@ END LOOP;
 DBMS_OUTPUT.PUT_LINE('----------------------------------');
 
 END LOOP;
-
 END;
-
 /
 
 SET SERVEROUTPUT ON;
