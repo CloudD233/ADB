@@ -1,5 +1,4 @@
-CREATE
-OR REPLACE PROCEDURE UpdateCustomerPhone(
+CREATE OR REPLACE PROCEDURE UpdateCustomerPhone(
     p_LastName CHAR,
     p_FirstName CHAR,
     p_priorAreaCode CHAR,
@@ -54,5 +53,4 @@ CALL UpdateCustomerPhone(
     '425',
     '111',
     '543-2345',
-    '111-1111'
-);
+    '111-1111');
