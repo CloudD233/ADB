@@ -1,5 +1,10 @@
-CREATE
-OR REPLACE FUNCTION ArtistWorkEthic (intArtistID INT) RETURN varchar IS counts int;
+CREATE OR REPLACE FUNCTION ArtistWorkEthic 
+    
+(intArtistID INT) 
+    
+RETURN varchar 
+    
+IS counts int;
 
 BEGIN
 SELECT
