@@ -27,3 +27,20 @@ select current_scn from v$database;
 --The number: 529513640
 
 --8 
+SELECT * FROM EmpTT 
+Versions Between SCN MINVALUE AND MAXVALUE  
+WHERE eid = 1;
+
+--10 
+UPDATE empTT
+SET salary = 600
+WHERE eid = 1;
+
+--11
+select current_scn from v$database;
+--The number: 529515202
+
+--12
+SELECT * FROM EmpTT 
+VERSIONS BETWEEN SCN MINVALUE AND MAXVALUE
+WHERE eid = 1;
