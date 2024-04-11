@@ -17,3 +17,13 @@ select current_scn from v$database;
 --The number: 529513182
 
 --6 
+UPDATE empTT
+SET salary = 300
+WHERE eid = 1;
+
+--7
+SELECT * FROM EmpTT;
+select current_scn from v$database;
+--The number: 529513640
+
+--8 
