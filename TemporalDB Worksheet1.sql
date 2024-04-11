@@ -55,3 +55,31 @@ OR (valid_time_start <= TO_DATE('04-Jul-2002') AND valid_time_end IS NULL);
 SELECT projNo, empId, valid_time_start, valid_time_end
 FROM Assign
 WHERE (valid_time_start <= TO_DATE('03-Dec-2022') AND (valid_time_end >= TO_DATE('03-Dec-2022') OR valid_time_end IS NULL));
+
+--18 
+CREATE TABLE emp (eid NUMBER,
+name VARCHAR(10), 
+salary NUMBER, 
+start_time TIMESTAMP,
+CONSTRAINT emp_pk PRIMARY KEY (eid),
+end_time TIMESTAMP, PERIOD FOR sal_time (start_time, end_time)
+);
+
+SELECT * FROM emp;
+--19 
+INSERT INTO emp(EID,Name, Salary, start_time, End_Time) 
+VALUES(1,'Cloud',100000, '01-Jan-2021', NULL);
+
+--20 
+UPDATE emp 
+SET End_Time = TO_TIMESTAMP('21-Jan-2024')
+Where EID = 1;
+
+--23
+alter table emp drop constraint emp_pk;
+alter table emp add constraint emp_pk
+primary key (eid, start_time);
+
+--24
+INSERT INTO emp (EID, Name, Salary, start_time, End_Time)
+VALUES (1,'Cloud',200000, TO_TIMESTAMP('21-Jan-2024'), NULL)
