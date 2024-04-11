@@ -1,0 +1,6 @@
+--3
+CREATE TABLE empTT (
+eid NUMBer,
+name VARCHAR(10),
+salary NUMBER,
+CONSTRAINT empTT_pk PRIMARY KEY(eid));
